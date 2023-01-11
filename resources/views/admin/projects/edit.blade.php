@@ -9,18 +9,18 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="title" class="form-label">Titolo</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                        name="title" value="{{ old('title', $project->name) }}">
-                    @error('title')
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" value="{{ old('name', $project->name) }}">
+                    @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="content" class="form-label">Content</label>
-                    <textarea class="form-control" id="content" name="content">{{ old('content', $project->description) }}</textarea>
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description">{{ old('description', $project->description) }}</textarea>
                 </div>
-                <div class="d-flex">
+                {{-- <div class="d-flex">
                     <div class="media me-4">
                         <img class="shadow" width="150" src="{{ asset('storage/' . $project->cover_image) }}"
                             alt="{{ $project->title }}">
@@ -32,11 +32,11 @@
                         @error('cover_image')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-                <button type="reset" class="btn btn-primary">Reset</button>
-            </form>
+                    </div> --}}
         </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+        </form>
+    </div>
     </div>
 @endsection

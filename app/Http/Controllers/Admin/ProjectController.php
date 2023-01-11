@@ -78,9 +78,10 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //   $data = $request->validated();
-        //  $slug = Project::generateSlug($request->name);
-        //  $data['slug'] = $slug;
+        $data = $request->validated();
+        $slug = Project::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $edit = $project->name;
         //  if ($request->hasFile('cover_image')) {
         //     if ($project->cover_image) {
         //         Storage::delete($project->cover_image);
@@ -89,8 +90,8 @@ class ProjectController extends Controller
         //     $path = Storage::disk('public')->put('post_images', $request->cover_image);
         //     $data['cover_image'] = $path;
         //  }
-        //  $project->update($data);
-        //  return redirect()->route('admin.projects.index')->with('message', "$project->title updated successfully");
+        $project->update($data);
+        return redirect()->route('admin.projects.index')->with('message', "$edit updated successfully");
     }
 
     /**
