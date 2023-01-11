@@ -14,9 +14,10 @@
                     <div>{{ $project->git_link }}</div>
                     <div>{{ $project->description }}</div>
                 </div>
-                <button class="btn btn-primary mt-3"><a
-                        href="{{ route('admin.projects.index') }}"style="color:white">Indietro</a></button>
             </div>
         </div>
-    </div>
-@endsection
+        <div>
+            <button class="btn btn-primary mt-3"><a
+                    href="{{ route('admin.projects.index') }}"style="color:white">Indietro</a></button>
+        </div>
+    @endsection

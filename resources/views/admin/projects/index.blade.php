@@ -18,7 +18,7 @@
                 <th scope="col">Framework</th>
                 <th scope="col">Team</th>
                 <th scope="col">Link Git</th>
-                <th scope="col">difficulty</th>
+                <th scope="col">Difficulty</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
