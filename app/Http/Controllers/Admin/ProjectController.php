@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -35,7 +38,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
-        $slug = Project::generateSlug($request->title);
+        $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
         //if ($request->hasFile('cover_image')) {
         //   $path = Storage::disk('public')->put('post_images', $request->cover_image);
@@ -97,7 +100,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $deleted = $project->title;
+        $deleted = $project->name;
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "$deleted deleted successfully");
     }
