@@ -1,22 +1,44 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 @section('content')
-<div class="container mt-5">
-    <div class="row g-4">
-        @foreach ($projects as $project)
-            <div class="col-4 d-flex justify-content-center align-items-center">
-                <div class="container card-box">
-                    <img class="my-img" src="https://picsum.photos/id/{{$project->id + 10}}/1920/1080" alt="">
-                    <div>{{$project->name}}</div>
-                    <div>{{$project->diff_lvl}}</div>
-                    <div><a href="{{route('admin.projects.show',$project->slug)}}">{{$project->slug}}</a></div>
-                    <div>{{$project->dev_lang}}</div>
-                    <div>{{$project->framework}}</div>
-                    <div>{{$project->team}}</div>
-                    <div>{{$project->git_link}}</div>
-                    <div>{{$project->description}}</div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-</div>
+    <h1>Projects</h1>
+    <a class="btn btn-success" href="{{ route('admin.projects.create') }}">Crea nuovo post</a>
+    @if (session()->has('message'))
+        <div class="alert alert-success mb-3 mt-3">
+            {{ session()->get('message') }}
+        </div>
+    @endif
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($projects as $project)
+                <tr>
+                    <th scope="row">{{ $project->id }}</th>
+                    <td><a href="{{ route('admin.projects.show', $project->slug) }}"
+                            title="View project">{{ $project->name }}</a>
+                    </td>
+                    <td>{{ Str::limit($project->description, 100) }}</td>
+                    <td><a class="link-secondary" href="{{ route('admin.projects.edit', $project->slug) }}"
+                            title="Edit project"><i class="fa-solid fa-pen"></i></a></td>
+                    <td>
+                        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-button btn btn-danger ms-3"
+                                data-item-title="{{ $project->name }}"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @include('partials.admin.modal-delete')
 @endsection
