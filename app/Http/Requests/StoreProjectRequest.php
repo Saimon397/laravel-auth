@@ -28,7 +28,7 @@ class StoreProjectRequest extends FormRequest
             'description' => 'nullable',
             'dev_lang' => 'required',
             'framework' => 'nullable',
-            'difficulty' => 'nullable',
+            'diff_lvl' => 'nullable',
             'team' => 'nullable',
             'git_link' => 'nullable',
         ];

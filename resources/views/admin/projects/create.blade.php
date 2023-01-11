@@ -20,11 +20,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="dev_lang" class="form-label">Linguaggi</label>
-                    <input type="file" name="dev_lang" id="dev_lang"
-                        class="form-control  @error('dev_lang') is-invalid @enderror">
-                    @error('dev_lang')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    <input type="text" class="form-control @error('dev_lang') is-invalid @enderror" id="dev_lang"
+                        name="dev_lang">
                 </div>
                 <div class="mb-3">
                     <label for="framework" class="form-label">Framework</label>
@@ -32,9 +29,9 @@
                         name="framework">
                 </div>
                 <div class="mb-3">
-                    <label for="difficulty" class="form-label">Livello di difficoltà</label>
-                    <input type="text" class="form-control @error('difficulty') is-invalid @enderror" id="difficulty"
-                        name="difficulty">
+                    <label for="diff_lvl" class="form-label">Livello di difficoltà</label>
+                    <input type="text" class="form-control @error('diff_lvl') is-invalid @enderror" id="diff_lvl"
+                        name="diff_lvl">
                 </div>
                 <div class="mb-3">
                     <label for="team" class="form-label">Team</label>
@@ -52,7 +49,7 @@
                         @error('cover_image')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                      </div> --}}
+                        </div> --}}
                 <button type="submit" class="btn btn-success">Submit</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
             </form>

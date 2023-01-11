@@ -29,7 +29,7 @@ class UpdateProjectRequest extends FormRequest
             'description' => ['nullable'],
             'dev_lang' => ['required'],
             'framework' => ['nullable'],
-            'difficulty' => ['nullable'],
+            'diff_lvl' => ['nullable'],
             'team' => ['nullable'],
             'link_git' => ['nullable'],
             'lvl_dif' => ['nullable']
