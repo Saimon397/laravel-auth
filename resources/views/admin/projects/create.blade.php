@@ -2,12 +2,20 @@
 
 @section('content')
     <h1>Create Project</h1>
-    <div class="row bg-white">
+    <div class="row">
         <div class="col-12">
             <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="p-4">
                 @csrf
                 <div class="mb-3">
-                    <label for="title" class="form-label">Titolo</label>
+                    <label for="cover_image" class="form-label">Picture</label>
+                    <input type="file" name="cover_image" id="cover_image"
+                        class="form-control  @error('cover_image') is-invalid @enderror">
+                    @error('cover_image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                         name="name">
                     @error('name')

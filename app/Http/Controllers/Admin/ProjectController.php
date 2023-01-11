@@ -6,7 +6,6 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -40,10 +39,10 @@ class ProjectController extends Controller
         $data = $request->validated();
         $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
-        //if ($request->hasFile('cover_image')) {
-        //   $path = Storage::disk('public')->put('post_images', $request->cover_image);
-        //   $data['cover_image'] = $path;
-        //}
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::disk('public')->put('project_images', $request->cover_image);
+            $data['cover_image'] = $path;
+        }
 
         $new_project = Project::create($data);
         return redirect()->route('admin.projects.show', $new_project->slug);
@@ -65,7 +64,7 @@ class ProjectController extends Controller
      *
      * @param  int  $id
      */
-    public function edit($project)
+    public function edit(Project $project)
     {
         return view('admin.projects.edit', compact('project'));
     }
@@ -82,14 +81,14 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
         $edit = $project->name;
-        //  if ($request->hasFile('cover_image')) {
-        //     if ($project->cover_image) {
-        //         Storage::delete($project->cover_image);
-        //     }
+        if ($request->hasFile('cover_image')) {
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
 
-        //     $path = Storage::disk('public')->put('post_images', $request->cover_image);
-        //     $data['cover_image'] = $path;
-        //  }
+            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+            $data['cover_image'] = $path;
+        }
         $project->update($data);
         return redirect()->route('admin.projects.index')->with('message', "$edit updated successfully");
     }

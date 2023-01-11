@@ -4,7 +4,7 @@
         <div class="row g-4">
             <div class="col-4 d-flex justify-content-center align-items-center">
                 <div class="container card-box">
-                    <img src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+                    <img class="my-img" src="{{ asset('storage/' . $project->cover_image) }}" alt="">
                     <div>{{ $project->name }}</div>
                     <div>{{ $project->diff_lvl }}</div>
                     <div><a href="{{ route('admin.projects.show', $project->slug) }}">{{ $project->slug }}</a></div>
