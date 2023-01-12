@@ -31,17 +31,18 @@ class StoreProjectRequest extends FormRequest
             'diff_lvl' => 'nullable',
             'team' => 'nullable',
             'git_link' => 'nullable',
-            'cover_image' => 'nullable|image|max: 250',
+            'cover_image' => 'nullable|image|max: 1000',
+            'type_id' => 'required|exists:types,id',
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Il titolo del progetto è obbligatorio',
-            'name.max' => 'Il titolo del progetto non può superare i :max caratteri',
-            'name.min' => 'Il titolo del progetto non può essere inferiore a :min caratteri',
-            'name.unique:projects' => 'Questo titolo é già esistente',
-            'dev_lang.required' => 'Immetti almeno un linguaggio'
+            'name.required' => 'Il nome del progetto è obbligatorio',
+            'name.max' => 'Il progetto non può superare i :max caratteri',
+            'name.min' => 'Il progetto non può essere inferiore a :min caratteri',
+            'name.unique:projects' => 'Questo nome esiste già!',
+            'dev_lang.required' => 'Immetti almeno un linguaggio utilizzato'
         ];
     }
 }

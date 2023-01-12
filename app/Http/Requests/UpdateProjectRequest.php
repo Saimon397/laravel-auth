@@ -32,7 +32,19 @@ class UpdateProjectRequest extends FormRequest
             'diff_lvl' => ['nullable'],
             'team' => ['nullable'],
             'link_git' => ['nullable'],
-            'cover_image' => ['nullable', 'image', 'max:1000']
+            'cover_image' => ['nullable', 'image', 'max:1000'],
+            'type_id' => 'required|exists:types,id',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Il nome del progetto è obbligatorio',
+            'name.max' => 'Il nome del progetto non può superare i :max caratteri',
+            'name.min' => 'Il nome del progetto non può essere inferiore a :min caratteri',
+            'name.unique:projects' => 'Questo nome esiste già!',
+            'dev_lang.required' => 'Immetti almeno un linguaggio utilizzato'
         ];
     }
 }
