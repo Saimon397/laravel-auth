@@ -7,7 +7,7 @@
             <form action="{{ route('admin.types.store') }}" method="POST" enctype="multipart/form-data" class="p-4">
                 @csrf
                 <div class="mb-3">
-                    <label for="workflow" class="form-label">Nome Tipo</label>
+                    <label for="workflow" class="form-label">Workflow name</label>
                     <input type="text" class="form-control @error('workflow') is-invalid @enderror" id="workflow"
                         name="workflow">
                     @error('workflow')

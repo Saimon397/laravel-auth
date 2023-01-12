@@ -19,7 +19,7 @@
                 <th scope="col">Team</th>
                 <th scope="col">Link Git</th>
                 <th scope="col">Difficulty</th>
-                <th scope="col">Type</th>
+                <th scope="col">Workflow</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>

@@ -51,6 +51,19 @@
                     <input type="text" class="form-control @error('git_link') is-invalid @enderror" id="git_link"
                         name="git_link">
                 </div>
+                <div class="mb-3">
+                    <label for="type_id" class="form-label">Select workflow</label>
+                    <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
+                        <option value="">Select workflow</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                                {{ $type->workflow }}</option>
+                        @endforeach
+                    </select>
+                    @error('type_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
                 {{-- <div class="mb-3">
                         <label for="cover_image" class="form-label">Immagine</label>
                         <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" >

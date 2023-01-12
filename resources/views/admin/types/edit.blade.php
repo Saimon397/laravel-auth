@@ -4,12 +4,12 @@
     <h1>Edit Type: {{ $type->workflow }}</h1>
     <div class="row d-flex justify-content-center">
         <div class="col-12">
-            <form action="{{ route('admin.types.update', $project->slug) }}" method="POST" enctype="multipart/form-data"
+            <form action="{{ route('admin.types.update', $type->slug) }}" method="POST" enctype="multipart/form-data"
                 class="p-4">
                 @csrf
                 @method('PUT')
                 <div class="mb-2">
-                    <label for="workflow" class="form-label">Name Type</label>
+                    <label for="workflow" class="form-label">Workflow name</label>
                     <input type="text" class="form-control @error('workflow') is-invalid @enderror" id="workflow"
                         name="workflow" value="{{ old('workflow', $type->workflow) }}">
                     @error('workflow')
