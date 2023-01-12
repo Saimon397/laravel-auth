@@ -18,7 +18,8 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        $types = Type::all();
+        return view('admin.projects.index', compact('projects', 'types'));
     }
 
     /**
@@ -27,7 +28,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -56,7 +58,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-
+        $types = Type::all();
         return view('admin.projects.show', compact('project'));
     }
 
@@ -67,6 +69,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $types = Type::all();
         return view('admin.projects.edit', compact('project'));
     }
 
@@ -87,7 +90,7 @@ class ProjectController extends Controller
                 Storage::delete($project->cover_image);
             }
 
-            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+            $path = Storage::disk('public')->put('project_images', $request->cover_image);
             $data['cover_image'] = $path;
         }
         $project->update($data);

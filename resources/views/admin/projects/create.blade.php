@@ -60,6 +60,8 @@
                         </div> --}}
                 <button type="submit" class="btn btn-success">Submit</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
+                <button class="btn btn-primary"><a
+                        href="{{ route('admin.projects.index') }}"style="color:white">Indietro</a></button>
             </form>
         </div>
     </div>

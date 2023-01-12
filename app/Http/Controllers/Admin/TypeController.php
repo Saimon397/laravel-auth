@@ -42,7 +42,7 @@ class TypeController extends Controller
         $slug = Type::generateSlug($request->workflow);
         $data['slug'] = $slug;
         $new_type = Type::create($data);
-        return redirect()->route('admin.types.show', $new_type->slug);
+        return redirect()->route('admin.types.index', $new_type->slug);
     }
 
     /**
