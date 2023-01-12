@@ -13,6 +13,9 @@
                     <div>{{ $project->team }}</div>
                     <div>{{ $project->git_link }}</div>
                     <div>{{ $project->description }}</div>
+                    @if ($project->type)
+                        <div class="fw-bold">Workflow: {{ $project->type->workflow }}</div>
+                    @endif
                 </div>
             </div>
         </div>

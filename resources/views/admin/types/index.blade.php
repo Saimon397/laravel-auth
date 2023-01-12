@@ -11,8 +11,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Name Type</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Workflow</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -24,7 +24,7 @@
                         <td><a href="{{ route('admin.types.show', $type->slug) }}"
                                 title="View Post">{{ $type->workflow }}</a></td>
                         <td><a class="" href="{{ route('admin.types.edit', $type->slug) }}" title="Edit Post"><i
-                                    class="fa-solid fa-pen"></i></a></td>
+                                    class="pt-2 fa-solid fa-pen"></i></a></td>
                         <td>
                             <form action="{{ route('admin.types.destroy', $type->slug) }}" method="POST">
                                 @csrf
