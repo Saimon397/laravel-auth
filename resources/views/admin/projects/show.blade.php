@@ -7,8 +7,11 @@
                     <img src="{{ asset('storage/' . $project->cover_image) }}" alt="">
                     <div>{{ $project->name }}</div>
                     <div>{{ $project->diff_lvl }}</div>
-                    <div>{{ $project->slug }}</div>
-                    <div>{{ $project->languages }}</div>
+                    @if (count($project->languages))
+                        @foreach ($project->languages as $language)
+                            <div>{{ $language->name }}</div>
+                        @endforeach
+                    @endif
                     <div>{{ $project->framework }}</div>
                     <div>{{ $project->team }}</div>
                     <div>{{ $project->git_link }}</div>

@@ -31,10 +31,14 @@
                     <td><a href="{{ route('admin.projects.show', $project->slug) }}"
                             title="View Post">{{ $project->name }}</a></td>
                     <td>{{ Str::limit($project->description, 100) }}</td>
-                    <td>{{ $project->languages }}</td>
+                    @if (count($project->languages))
+                        @foreach ($project->languages as $language)
+                            <td>{{ $language->name }}</td>
+                        @endforeach
+                    @endif
                     <td>{{ $project->framework }}</td>
                     <td>{{ $project->team }}</td>
-                    <td>{{ $project->link_git }}</td>
+                    <td>{{ $project->git_link }}</td>
                     <td>{{ $project->diff_lvl }}</td>
                     @if ($project->type)
                         <td>{{ $project->type->workflow }}</td>
