@@ -18,8 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        $types = Type::all();
-        return view('admin.projects.index', compact('projects', 'types'));
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -58,7 +57,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $types = Type::all();
         return view('admin.projects.show', compact('project'));
     }
 
