@@ -8,7 +8,7 @@
                     <div>{{ $project->name }}</div>
                     <div>{{ $project->diff_lvl }}</div>
                     <div>{{ $project->slug }}</div>
-                    <div>{{ $project->dev_lang }}</div>
+                    <div>{{ $project->languages }}</div>
                     <div>{{ $project->framework }}</div>
                     <div>{{ $project->team }}</div>
                     <div>{{ $project->git_link }}</div>

@@ -31,7 +31,7 @@
                     <td><a href="{{ route('admin.projects.show', $project->slug) }}"
                             title="View Post">{{ $project->name }}</a></td>
                     <td>{{ Str::limit($project->description, 100) }}</td>
-                    <td>{{ $project->dev_lang }}</td>
+                    <td>{{ $project->languages }}</td>
                     <td>{{ $project->framework }}</td>
                     <td>{{ $project->team }}</td>
                     <td>{{ $project->link_git }}</td>

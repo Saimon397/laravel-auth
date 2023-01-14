@@ -26,7 +26,6 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => 'required|unique:projects|max:150|min:3',
             'description' => 'nullable',
-            'dev_lang' => 'required',
             'framework' => 'nullable',
             'diff_lvl' => 'nullable',
             'team' => 'nullable',
@@ -39,10 +38,13 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name.required' => 'Il nome del progetto è obbligatorio',
+            'type_id.exists' => 'Tipo inesistente',
+            'name.unique' => 'Nome già utilizzato',
             'name.max' => 'Il progetto non può superare i :max caratteri',
             'name.min' => 'Il progetto non può essere inferiore a :min caratteri',
-            'name.unique:projects' => 'Questo nome esiste già!',
-            'dev_lang.required' => 'Immetti almeno un linguaggio utilizzato'
+            'diff_lvl.min' => 'Livello difficoltà non può essere inferiore a :min',
+            'diff_lvl.max' => 'Livello difficoltà non può essere superiore a :max',
+            'cover_image' => 'l\'immagine è troppo grande',
         ];
     }
 }

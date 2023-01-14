@@ -27,7 +27,6 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name' => ['required', Rule::unique('projects')->ignore($this->project)],
             'description' => ['nullable'],
-            'dev_lang' => ['required'],
             'framework' => ['nullable'],
             'diff_lvl' => ['nullable'],
             'team' => ['nullable'],
@@ -41,10 +40,13 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name.required' => 'Il nome del progetto è obbligatorio',
+            'type_id.exists' => 'Tipo già esistente',
+            'name.unique' => 'Nome già utilizzato',
             'name.max' => 'Il nome del progetto non può superare i :max caratteri',
             'name.min' => 'Il nome del progetto non può essere inferiore a :min caratteri',
-            'name.unique:projects' => 'Questo nome esiste già!',
-            'dev_lang.required' => 'Immetti almeno un linguaggio utilizzato'
+            'diff_lvl.min' => 'Livello difficoltà non può essere inferiore a :min',
+            'diff_lvl.max' => 'Livello difficoltà non può essere superiore a :max',
+            'image.max' => 'l\'immagine è troppo grande',
         ];
     }
 }

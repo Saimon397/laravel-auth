@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
     Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
+    Route::resource('languages', LanguageController::class)->parameters(['languages' => 'language:slug'])->except('show', 'create', 'edit');
 });
 
 require __DIR__ . '/auth.php';

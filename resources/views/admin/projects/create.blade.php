@@ -27,9 +27,11 @@
                     <textarea class="form-control" id="description" name="description"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="dev_lang" class="form-label">Linguaggi</label>
-                    <input type="text" class="form-control @error('dev_lang') is-invalid @enderror" id="dev_lang"
-                        name="dev_lang">
+                    <label for="languages">Languages</label> <br>
+                    @foreach ($languages as $language)
+                        <input type="checkbox" name="languages[]" value="{{ $language->id }}">
+                        <span class="text-capitalize">{{ $language->name }}</span>
+                    @endforeach
                 </div>
                 <div class="mb-3">
                     <label for="framework" class="form-label">Framework</label>
