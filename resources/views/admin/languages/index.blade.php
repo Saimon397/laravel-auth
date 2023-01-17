@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div id="index-lang">
+    <div id="index-languages">
         <div class="">
             @if (session()->has('message'))
                 <div class="alert alert-success mb-3 mt-3 w-75 m-auto">
