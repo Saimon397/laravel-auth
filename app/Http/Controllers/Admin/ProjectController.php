@@ -11,6 +11,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -20,8 +21,16 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        $types = Type::all();
+
+        if (Auth::user()->isAdmin()) {
+            $projects = Project::all();
+        } else {
+            $userId = Auth::id();
+            $projects = Project::where('id', $userId)->all();
+        }
+
+        return view('admin.projects.index', compact('projects', 'types'));
     }
 
     /**
